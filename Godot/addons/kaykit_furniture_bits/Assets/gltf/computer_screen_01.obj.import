@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cg1yd63sjxfe2"
+path="res://.godot/imported/computer_screen_01.obj-72070550d1c0627d6b5a185e5abd1c1d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/computer_screen_01.obj-72070550d1c0627d6b5a185e5abd1c1d.mesh"]
+
+source_file="res://addons/kaykit_furniture_bits/Assets/gltf/computer_screen_01.obj"
+dest_files=["res://.godot/imported/computer_screen_01.obj-72070550d1c0627d6b5a185e5abd1c1d.mesh", "res://.godot/imported/computer_screen_01.obj-72070550d1c0627d6b5a185e5abd1c1d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
