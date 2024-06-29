@@ -7,6 +7,8 @@ var ws = WebSocketPeer.new()
 
 var motion = false
 
+var old_objects = []
+
 func _ready():
 	if tcp_server.listen(PORT) != OK:
 		print("Unable to start the server.")
@@ -16,7 +18,7 @@ func _ready():
 func _physics_process(delta):
 
 	if motion:
-		translate(-Vector3.FORWARD * delta)
+		translate(-Vector3.FORWARD * delta * 2)
 
 	while tcp_server.is_connection_available():
 		var conn = tcp_server.take_connection()
@@ -30,6 +32,7 @@ func _physics_process(delta):
 			var msg = ws.get_packet().get_string_from_ascii()
 			var action = JSON.parse_string(msg)
 			perform(action)
+	see()
 
 func _exit_tree():
 	ws.close()
@@ -58,16 +61,31 @@ func my_move(status: String):
 
 func my_rotate(direction):
 	match direction:
-		"left":
-			look_at(Vector3(-1, 0, 0))
-		"right":
-			look_at(Vector3(1, 0, 0))
 		"up":
-			look_at(Vector3(0, 0, -1))
+			look_at(global_position + Vector3(-1, 0, 0))
 		"down":
-			look_at(Vector3(0, 0, 1))
+			look_at(global_position + Vector3(1, 0, 0))
+		"left":
+			look_at(global_position + Vector3(0, 0, -1))
+		"right":
+			look_at(global_position + Vector3(0, 0, 1))
 		_:
 			print("Unknown direction: ", direction)
 
 func clean():
 	pass
+	
+func see():
+	var sight = $Area3D
+	var objects = sight.get_overlapping_bodies()
+	objects.erase(self)
+	if objects != old_objects:
+		old_objects = objects
+		for obj in objects:
+			var obj_name = obj.get_parent().name
+			if "Door" in obj_name:
+				obj_name = "door"
+			elif "Wall" in obj_name:
+				obj_name = "wall"
+			var perception = {"type": "see", "object": obj_name}
+			ws.send_text(JSON.stringify(perception))

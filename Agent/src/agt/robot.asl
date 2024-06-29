@@ -9,7 +9,11 @@
         focus(ArtId);
         .wait(2000);
         !move;
-        .wait(2000);
+        .wait(500);
+        !stop;
+        !rotate("right");
+        !move;
+        .wait(10000);
         !stop.
 
 +!move
@@ -25,7 +29,8 @@
 +!rotate(Direction)
     :   true
     <-  .print("Rotating robot");
-        rotate(Direction).
+        rotate(Direction);
+        .wait(500).
 
 +!clean
     :   true
