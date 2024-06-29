@@ -1,30 +1,73 @@
 extends CharacterBody3D
 
-
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+# Connection parameters
 const PORT = 9080
-var socket: WebSocketPeer = WebSocketPeer.new()
+var tcp_server = TCPServer.new()
+var ws = WebSocketPeer.new()
+
+var motion = false
 
 func _ready():
-	pass
-	
+	if tcp_server.listen(PORT) != OK:
+		print("Unable to start the server.")
+		set_process(false)
+
 
 func _physics_process(delta):
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if motion:
+		translate(-Vector3.FORWARD * delta)
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+	while tcp_server.is_connection_available():
+		var conn = tcp_server.take_connection()
+		assert(conn != null)
+		ws.accept_stream(conn)
 
-	move_and_slide()
+	ws.poll()
+
+	if ws.get_ready_state() == WebSocketPeer.STATE_OPEN:
+		while ws.get_available_packet_count():
+			var msg = ws.get_packet().get_string_from_ascii()
+			var action = JSON.parse_string(msg)
+			perform(action)
+
+func _exit_tree():
+	ws.close()
+	tcp_server.stop()
+
+func perform(action: Dictionary):
+	print("Performing action: ", action)
+	match action:
+		{"type": "move", "status": _}:
+			my_move(action["status"])
+		{"type": "rotate", "direction": _}:
+			my_rotate(action["direction"])
+		{"type": "clean"}:
+			clean()
+		_:
+			print("Unknown action: ", action)
+
+func my_move(status: String):
+	match status:
+		"start":
+			motion = true
+		"stop":
+			motion = false
+		_:
+			print("Unknown status: ", status)	
+
+func my_rotate(direction):
+	match direction:
+		"left":
+			look_at(Vector3(-1, 0, 0))
+		"right":
+			look_at(Vector3(1, 0, 0))
+		"up":
+			look_at(Vector3(0, 0, -1))
+		"down":
+			look_at(Vector3(0, 0, 1))
+		_:
+			print("Unknown direction: ", direction)
+
+func clean():
+	pass
