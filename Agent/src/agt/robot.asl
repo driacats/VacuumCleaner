@@ -1,5 +1,12 @@
 // Cleaning Robot Agent
 
+clockwise(up, right).
+clockwise(right, down).
+clockwise(down, left).
+clockwise(left, up).
+
+rotation(down).
+
 +!start
     :   true
     <-  .print("Starting robot");
@@ -11,10 +18,8 @@
         !move;
         .wait(500);
         !stop;
-        !rotate("right");
-        !move;
-        .wait(10000);
-        !stop.
+        !rotate(right);
+        !move.
 
 +!move
     :   true
@@ -30,9 +35,20 @@
     :   true
     <-  .print("Rotating robot");
         rotate(Direction);
+        -+rotation(Direction);
         .wait(500).
 
 +!clean
     :   true
     <-  .print("Cleaning robot");
         clean.
+
++warning(Object)
+    :   rotation( Direction ) & clockwise( Direction, NewDirection )
+    <-  !stop;
+        !rotate( NewDirection );
+        !move.
+
++warning(Object)
+    :   true
+    <-  .print("Warning: ", Object).
