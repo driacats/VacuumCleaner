@@ -2,7 +2,68 @@
 \usepackage[T1]{fontenc}
 
 \usepackage{tikz}
+\usepackage{listings}
 \usetikzlibrary{patterns}
+
+% Definizione dei colori per la sintassi
+\definecolor{everforestBg}{HTML}{fffbef}
+\definecolor{everforestFg}{HTML}{5c6a72}
+\definecolor{everforestRed}{HTML}{f85552}
+\definecolor{everforestGreen}{HTML}{8da101}
+\definecolor{everforestYellow}{HTML}{dfa000}
+\definecolor{everforestBlue}{HTML}{3a94c5}
+\definecolor{everforestPurple}{HTML}{df69ba}
+\definecolor{everforestAqua}{HTML}{35a77c}
+\definecolor{everforestOrange}{HTML}{f57d26}
+\definecolor{everforestGray}{HTML}{939f91}
+
+\lstdefinelanguage{AgentSpeak}{
+  keywords={
+    beliefs, goals, plans, initial_beliefs, initial_goals,
+    +, -, !, ?, <-, :, .send, .print, .wait, .my_name, 
+    true, false, not, &, |, if, else, for, while
+  },
+  sensitive=true,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+}
+
+%\lstset{
+  %language=AgentSpeak,
+  %basicstyle=\ttfamily\small\color{everforestFg},
+  %keywordstyle=\color{everforestBlue}\bfseries,
+  %commentstyle=\color{everforestGray}\itshape,
+  %stringstyle=\color{everforestGreen},
+  %numbers=none,
+  %%frame=single,
+  %%framesep=5pt,
+  %breaklines=true,
+  %breakatwhitespace=true,
+  %showstringspaces=false,
+  %%backgroundcolor=\color{everforestBg},
+  %rulecolor=\color{everforestFg},
+  %%frameround=tttt,
+%}
+
+\lstset{
+    keywordstyle=\color{blue}\bfseries,
+    keywordstyle=[2]\color{teal},
+    keywordstyle=[3]\color{red},
+    commentstyle=\color{gray}\itshape,
+    stringstyle=\color{orange},
+    basicstyle=\ttfamily,
+    backgroundcolor=\color{white},
+    rulecolor=\color{black},
+    tabsize=2,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=false,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false
+}
 
 \title{Towards a Continous Cleaning Robot}
 \author{Andrea Gatti\orcidID{0009-0003-0992-4058}}

@@ -1,4 +1,6 @@
 \label{sec:introduction}
-The cleaning robot is a classical problem in the Multi-Agent System literature.
-Normally, the cleaning robot is a robot that moves in a grid environment and cleans the dirty cells.
-The reasoning about the cleaning robot is usually done in a discrete way, where the robot moves from one cell to another.
+The cleaning robot is a landmark case study in the world of multi-agent systems, allowing us to think about spatiality with a precise and well-defined goal: to remove all dirt.
+The classic example involves a grid environment of which some cells are dirty, and an agent located on it that must find and clean all the dirty cells knowing only how to take a step in one of the four directions and remove the dirt.
+With the rapid evolution of game engines, however, the "step-by-step" approach seems to be becoming limiting: we no longer need to think this way; we can abstract more.
+
+In this paper, we propose a cleaning robot that explores space by reasoning about the continuum and leaving the precise management of motion to the environment.

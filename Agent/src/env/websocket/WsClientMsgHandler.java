@@ -1,4 +1,4 @@
-package environment.websocket;
+package websocket;
 
 public interface WsClientMsgHandler {
     

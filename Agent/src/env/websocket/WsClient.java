@@ -1,4 +1,4 @@
-package environment.websocket;
+package websocket;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -9,7 +9,7 @@ import org.java_websocket.drafts.Draft;
 import org.java_websocket.drafts.Draft_6455;
 import org.java_websocket.handshake.ServerHandshake;
 
-import environment.websocket.WsClientMsgHandler;
+import websocket.WsClientMsgHandler;
 
 public class WsClient extends WebSocketClient {
 

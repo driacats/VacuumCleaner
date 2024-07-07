@@ -1,4 +1,62 @@
 \label{sec:design_and_implementation}
+The framework uses JaCaMo for the multi-agent system and Godot for the environment, connected using the WebSocket protocol.
+
+\subsection{Robot Actions}
+The agent is able to perform some simple actions: rotate, move, stop and clean.
+\begin{figure}
+    \centering
+    \begin{tikzpicture}
+        \draw[pattern=north east lines] (0, 0) circle (0.5cm);
+        \draw [->] (0, 0.6) to [bend left=40] (0.6, 0); 
+        \draw [->] (0, -0.6) to [bend left=40] (-0.6, 0); 
+        \draw (0, -1) node{\texttt{rotate}};
+
+        \draw[black!50!white, pattern=north east lines, pattern color = black!50!white] (2, 0) circle (0.5cm);
+        \draw[->] (2.6, 0) -- (2.9, 0);
+        \draw[pattern=north east lines] (3.5, 0) circle (0.5cm);
+        \draw (2.75, -1) node{\texttt{move}};
+
+        \foreach \x in {5, 5.25, ..., 6}{
+            \draw (\x, -0.8) -- (5.5, 0);
+            \draw (\x, 0.8) -- (5.5, 0);
+        }
+        \foreach \y in {-0.5, -0.25, ..., 0.5}{
+            \draw (4.75, \y) -- (5.5, 0);
+            \draw (6.25, \y) -- (5.5, 0);
+        }
+        \draw[fill=white, white] (5.5, 0) circle (0.55cm);
+        \draw[pattern=north east lines] (5.5, 0) circle (0.5cm);
+        \draw (5.5, -1) node{\texttt{clean}};
+    \end{tikzpicture}
+\end{figure}
+These actions are implemented as simple plans in the agent body.
+Here we present the motion action as example.
+\begin{lstlisting}[language=AgentSpeak]
++!move
+    :   true
+    <-  .print("Moving robot");
+        move.
+\end{lstlisting}
+In this case the action is to move and the agent calls the \lstinline{move} artifact method.
+\begin{lstlisting}[language=java]
+@OPERATION
+public void move(){
+    JSONObject json = new JSONObject();
+    json.put("type", "move");
+    json.put("status", "start");
+    send(json);
+}
+\end{lstlisting}
+
+\subsection{Logic Exploration}
+
+\begin{figure}
+    \centering
+    \input{sections/tikz/relations.tex}
+    \label{fig:relations}
+    \caption{Relations between regions}
+\end{figure}
+
 \begin{figure}[ht]
     \centering
     \input{sections/tikz/env.tex}

@@ -1,4 +1,4 @@
-package environment;
+package Environment;
 
 public class Region {
     int min_x;

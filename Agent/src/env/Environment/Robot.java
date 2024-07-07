@@ -1,4 +1,4 @@
-package environment;
+package Environment;
 
 import org.json.JSONObject;
 
@@ -8,15 +8,14 @@ import jason.asSyntax.Literal;
 import java.util.List;
 import java.util.ArrayList;
 
-import environment.websocket.WsServer;
-import environment.websocket.WsClient;
+import websocket.WsClient;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import environment.websocket.WsClientMsgHandler;
+import websocket.WsClientMsgHandler;
 
-import environment.Room;
-import environment.Region;
+// import Environment.Room;
+// import Environment.Region;
 
 public class Robot extends Artifact implements WsClientMsgHandler{
 
@@ -30,7 +29,7 @@ public class Robot extends Artifact implements WsClientMsgHandler{
     
     @OPERATION
     public void init() throws URISyntaxException {
-        conn = new WsClient(new URI("ws://localhost:9080"));
+        conn = new WsClient( new URI( "ws://" + host + ":" + port ) );
         conn.setMsgHandler(this::handleMsg);
         conn.connect();
 

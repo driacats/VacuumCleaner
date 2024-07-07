@@ -1,0 +1,4 @@
++!move
+    :   true
+    <-  .print("Moving robot");
+        move.
