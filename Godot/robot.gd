@@ -1,34 +1,29 @@
 extends CharacterBody3D
 
+var speed = 6
+var acceleration = 10
+
 # Connection parameters
 const PORT = 9080
 var tcp_server = TCPServer.new()
 var ws = WebSocketPeer.new()
 
 var motion = false
-
 var old_objects = []
-
 var collisions = []
+
+var end_communication = true
+
+@onready var nav: NavigationAgent3D = $NavigationAgent3D
+@onready var collision_shape: CollisionShape3D = $CollisionShape3D
 
 func _ready():
 	if tcp_server.listen(PORT) != OK:
 		print("Unable to start the server.")
 		set_process(false)
-
+		
 
 func _physics_process(delta):
-	
-	if $RayCast3D.is_colliding():
-		var collider = $RayCast3D.get_collider()
-		if collider.get_parent().name not in collisions:
-			var perception = {"type": "warning", "colliding": true, "object": collider.get_parent().name.to_lower()}
-			collisions.append(collider.get_parent().name)
-			ws.send_text(JSON.stringify(perception))
-
-	if motion:
-		translate(-Vector3.FORWARD * delta * 2)
-
 	while tcp_server.is_connection_available():
 		var conn = tcp_server.take_connection()
 		assert(conn != null)
@@ -41,48 +36,39 @@ func _physics_process(delta):
 			var msg = ws.get_packet().get_string_from_ascii()
 			var action = JSON.parse_string(msg)
 			perform(action)
-	see()
+			
+	if nav.is_navigation_finished():
+		if not end_communication:
+			var msg = {"type": "inform", "code": "gained"}
+			ws.send_text(JSON.stringify(msg))
+			end_communication = true
+		return
+	
+	var direction = Vector3()
+	direction = nav.get_next_path_position() - global_position
+	direction = direction.normalized()
+	
+	velocity = velocity.lerp(direction * speed, acceleration * delta)
+	
+	move_and_slide()
 
 func _exit_tree():
 	ws.close()
 	tcp_server.stop()
-
+	
 func perform(action: Dictionary):
 	print("Performing action: ", action)
 	match action:
-		{"type": "move", "status": _}:
-			my_move(action["status"])
-		{"type": "rotate", "direction": _}:
-			my_rotate(action["direction"])
-		{"type": "clean"}:
-			clean()
-		_:
-			print("Unknown action: ", action)
-
-func my_move(status: String):
-	match status:
-		"start":
-			motion = true
-		"stop":
-			motion = false
-		_:
-			print("Unknown status: ", status)	
-
-func my_rotate(direction):
-	match direction:
-		"up":
-			look_at(global_position + Vector3(1, 0, 0))
-		"down":
-			look_at(global_position + Vector3(-1, 0, 0))
-		"left":
-			look_at(global_position + Vector3(0, 0, -1))
-		"right":
-			look_at(global_position + Vector3(0, 0, 1))
-		_:
-			print("Unknown direction: ", direction)
-
-func clean():
-	pass
+		{"type": "gain", "target": _}:
+			var new_target = action["target"]
+			end_communication = false
+			nav.set_target_position(get_node("/root/Node3D/" + new_target).global_position)
+		{"type": "clean", "target": _}:
+			var dirt = action["target"]
+			get_node("/root/Node3D/" + dirt).queue_free()
+			var msg = {"type": "inform", "code": "cleaned"}
+			ws.send_text(JSON.stringify(msg))
+	
 
 func get_rough_area(static_body: StaticBody3D):
 	var collision_shape = static_body.get_node("CollisionShape3D")

@@ -1,0 +1,38 @@
+\begin{thebibliography}{1}
+
+\bibitem{DBLP:books/aw/RN2020}
+Stuart Russell and Peter Norvig.
+\newblock {\em Artificial Intelligence: {A} Modern Approach (4th Edition)}.
+\newblock Pearson, 2020.
+
+\bibitem{godot}
+Godot engine.
+\newblock \url{https://godotengine.org/}.
+\newblock Accessed: \today.
+
+\bibitem{unity}
+Unity real-time development platform.
+\newblock \url{https://unity.com/}.
+\newblock Accessed: \today.
+
+\bibitem{unreal}
+Unreal engine.
+\newblock \url{https://www.unrealengine.com/}.
+\newblock Accessed: \today.
+
+\bibitem{Karur2021ASO}
+Karthik Karur, Nitin Sharma, Chinmay Dharmatti, and Joshua~E. Siegel.
+\newblock A survey of path planning algorithms for mobile robots.
+\newblock {\em Vehicles}, 2021.
+
+\bibitem{cilc}
+Andrea~Gatti Angelo~Ferrando and Viviana Mascardi.
+\newblock Geometric and spatial reasoning in bdi agents: a survey.
+\newblock In {\em CEUR Workshop Proceedings}, 2024.
+
+\bibitem{DBLP:conf/kr/RandellCC92}
+David~A. Randell, Zhan Cui, and Anthony~G. Cohn.
+\newblock A spatial logic based on regions and connection.
+\newblock In Bernhard Nebel, Charles Rich, and William~R. Swartout, editors, {\em Proceedings of the 3rd International Conference on Principles of Knowledge Representation and Reasoning (KR'92). Cambridge, MA, USA, October 25-29, 1992}, pages 165--176. Morgan Kaufmann, 1992.
+
+\end{thebibliography}

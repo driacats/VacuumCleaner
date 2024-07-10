@@ -9,8 +9,12 @@ import java.util.List;
 import java.util.ArrayList;
 
 import websocket.WsClient;
+
+import java.io.PrintStream;
 import java.net.URI;
 import java.net.URISyntaxException;
+
+import java.io.OutputStream;
 
 import websocket.WsClientMsgHandler;
 
@@ -20,7 +24,7 @@ import websocket.WsClientMsgHandler;
 public class Robot extends Artifact implements WsClientMsgHandler{
 
     private int port = 9080;
-    private String host = "localhost";
+    private String host = "127.0.0.1";
     private WsClient conn;
     // env is a list of rooms. Each room is a list of regions. Each region is a rectangle.
     private List<Room> env = new ArrayList<Room>();
@@ -29,6 +33,13 @@ public class Robot extends Artifact implements WsClientMsgHandler{
     
     @OPERATION
     public void init() throws URISyntaxException {
+
+        System.setErr(new PrintStream(new OutputStream() {
+                   public void write(int b) {
+                       // Non fare nulla
+                   }
+               }));
+
         conn = new WsClient( new URI( "ws://" + host + ":" + port ) );
         conn.setMsgHandler(this::handleMsg);
         conn.connect();
@@ -44,35 +55,19 @@ public class Robot extends Artifact implements WsClientMsgHandler{
     }
 
     @OPERATION
-    public void act(){
+    public void gain(String target) {
         JSONObject json = new JSONObject();
-        json.put("action", "connection_start");
+        json.put("type", "gain");
+        json.put("target", target);
         send(json);
     }
 
     @OPERATION
-    public void rotate(String direction){
+    public void clean(String target) {
         JSONObject json = new JSONObject();
-        json.put("type", "rotate");
-        json.put("direction", direction);
+        json.put("type", "clean");
+        json.put("target", target);
         send(json);
-    }
-
-    @OPERATION
-    public void move(){
-        JSONObject json = new JSONObject();
-        json.put("type", "move");
-        json.put("status", "start");
-        send(json);
-    }
-
-    @OPERATION
-    public void stop(){
-        JSONObject json = new JSONObject();
-        json.put("type", "move");
-        json.put("status", "stop");
-        send(json);
-        env.get(actual_room).print();
     }
 
     void logicalPercept( Region region, int id ){
@@ -135,6 +130,13 @@ public class Robot extends Artifact implements WsClientMsgHandler{
                 signal("msg");
             } catch( Exception e ){
                 System.out.println("[env] signal");
+            }
+        }
+        if (json.getString("type").equals("inform")) {
+            if ( json.getString("code").equals("gained")) {
+                signal("gained");
+            } else if ( json.getString("code").equals("cleaned")) {
+                signal("cleaned");
             }
         }
         else {

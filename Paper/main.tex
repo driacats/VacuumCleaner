@@ -2,87 +2,32 @@
 \usepackage[T1]{fontenc}
 
 \usepackage{tikz}
+\usepackage{graphicx}
 \usepackage{listings}
+\usepackage{hyperref}
 \usetikzlibrary{patterns}
 
-% Definizione dei colori per la sintassi
-\definecolor{everforestBg}{HTML}{fffbef}
-\definecolor{everforestFg}{HTML}{5c6a72}
-\definecolor{everforestRed}{HTML}{f85552}
-\definecolor{everforestGreen}{HTML}{8da101}
-\definecolor{everforestYellow}{HTML}{dfa000}
-\definecolor{everforestBlue}{HTML}{3a94c5}
-\definecolor{everforestPurple}{HTML}{df69ba}
-\definecolor{everforestAqua}{HTML}{35a77c}
-\definecolor{everforestOrange}{HTML}{f57d26}
-\definecolor{everforestGray}{HTML}{939f91}
-
-\lstdefinelanguage{AgentSpeak}{
-  keywords={
-    beliefs, goals, plans, initial_beliefs, initial_goals,
-    +, -, !, ?, <-, :, .send, .print, .wait, .my_name, 
-    true, false, not, &, |, if, else, for, while
-  },
-  sensitive=true,
-  comment=[l]{//},
-  morecomment=[s]{/*}{*/},
-  morestring=[b]",
-  morestring=[b]',
-}
-
-%\lstset{
-  %language=AgentSpeak,
-  %basicstyle=\ttfamily\small\color{everforestFg},
-  %keywordstyle=\color{everforestBlue}\bfseries,
-  %commentstyle=\color{everforestGray}\itshape,
-  %stringstyle=\color{everforestGreen},
-  %numbers=none,
-  %%frame=single,
-  %%framesep=5pt,
-  %breaklines=true,
-  %breakatwhitespace=true,
-  %showstringspaces=false,
-  %%backgroundcolor=\color{everforestBg},
-  %rulecolor=\color{everforestFg},
-  %%frameround=tttt,
-%}
-
-\lstset{
-    keywordstyle=\color{blue}\bfseries,
-    keywordstyle=[2]\color{teal},
-    keywordstyle=[3]\color{red},
-    commentstyle=\color{gray}\itshape,
-    stringstyle=\color{orange},
-    basicstyle=\ttfamily,
-    backgroundcolor=\color{white},
-    rulecolor=\color{black},
-    tabsize=2,
-    captionpos=b,
-    breaklines=true,
-    breakatwhitespace=false,
-    showspaces=false,
-    showstringspaces=false,
-    showtabs=false
-}
+\input{colors.tex}
+\input{lstsettings.tex}
 
 \title{Towards a Continous Cleaning Robot}
 \author{Andrea Gatti\orcidID{0009-0003-0992-4058}}
-\institute{University of Genoa}
+\institute{University of Genoa \\ \email{\url{andrea.gatti@edu.unige.it}}}
 
 \begin{document}
 	\maketitle
 
 	\begin{abstract}
-		The abstract should briefly summarize the contents of the paper in 150--250 words.
+    Cleaning vacuum cleaner robot is a common didactic example in the field of multi-agent systems.
+    Normally, the robot is placed inside a grid world and reasons directly on the step to perform.
+    In this work, we present a different approach where the robot is placed in a continuous environment and reasons in a more abstract way on regions instead of cells.
+    In this way, the agent is able to abstract more and focus on high-level tasks instead of low-level details.
 
-		\keywords{First keyword  \and Second keyword \and Another keyword.}
+		\keywords{Intelligent Agents \and Virtual Environment \and Cleaning Robot.}
 	\end{abstract}
 
-	\section{Introduction}
+	\section{Introduction and Motivation}
 	\input{sections/introduction.tex}
-
-	\section{Related Work}
-	\input{sections/related_work.tex}
 
 	\section{Design and Implementation}
 	\input{sections/design_and_implementation.tex}
@@ -90,7 +35,10 @@
 	\section{Results}
 	\input{sections/results.tex}
 
-	\section{Conclusions}
+	\section{Conclusions and Future Work}
 	\input{sections/conclusions.tex}
+
+  \bibliographystyle{unsrt}
+  \bibliography{bibliography}
 
 \end{document}

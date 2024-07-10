@@ -1242,4 +1242,3 @@ to0pt{\kern0.55\wd0\vrule height0.45\ht0\hss}\box0}}}}
 
 \endinput
 %end of file llncs.cls
-

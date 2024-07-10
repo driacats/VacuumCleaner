@@ -1,0 +1,79 @@
+\lstdefinelanguage{AgentSpeak}{
+  alsoletter={.},
+  keywords={
+    true, false, not, &, |, if, else, for, while,
+    go_to_clean, move_to, find_and_clean, gain, clean,
+    .wait, .print, .my_name, .send
+  },
+  keywords=[2]{
+    my_region, dirt, ntpp, cleaned, gained
+  },
+  keywords=[3]{
+    Dirt, Region
+  },
+  sensitive=true,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]",
+  morestring=[b]',
+  moredelim=**[s][\color{everforestRed}]{!}{\ },
+  moredelim=**[s][\color{everforestRed}]{+!}{\ },
+  moredelim=**[s][\color{everforestRed}]{-!}{\ },
+  moredelim=**[s][\color{everforestRed}]{?}{\ },
+  moredelim=**[s][\color{everforestRed}]{+}{\ },
+  moredelim=**[s][\color{everforestRed}]{-}{\ },
+  moredelim=**[s][\color{everforestRed}]{<-}{\ },
+  moredelim=**[s][\color{everforestRed}]{:}{\ },
+  moredelim=**[s][\color{everforestRed}]{;}{\ },
+}
+
+%\lstdefinelanguage{AgentSpeak}{
+%  alsoletter={., _},
+%  keywords={dirt, my_region},
+%  sensitive=true,
+%  comment=[l]{//},
+%  morecomment=[s]{/*}{*/},
+%  morestring=[b]",
+%  moredelim=**[s][\color{everforestRed}]{+!}{\ },
+%  moredelim=**[s][\color{everforestRed}]{!}{\ },
+%  moredelim=**[s][\color{everforestRed}]{-}{\ },
+%  moredelim=**[s][\color{everforestRed}]{<-}{\ },
+%  moredelim=**[s][\color{everforestRed}]{:}{\ },
+%  moredelim=**[s][\color{everforestRed}]{&}{\ },
+%  moredelim=**[s][\color{everforestAqua}]{.}{(},
+%}
+
+\lstset{
+    keywordstyle=\color{everforestAqua}\bfseries,
+    keywordstyle=[2]\color{everforestBlue},
+    keywordstyle=[3]\color{everforestFg},
+    keywordstyle=[4]\color{everforestRed},
+    commentstyle=\color{gray}\itshape,
+    stringstyle=\color{everforestYellow},
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{white},
+    rulecolor=\color{black},
+    tabsize=2,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=false,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false
+}
+
+%\lstset{
+%  language=AgentSpeak,
+%  backgroundcolor=\color{white},
+%  basicstyle=\color{everforestFg}\ttfamily\small,
+%  keywordstyle=\color{everforestAqua},
+%  commentstyle=\color{everforestGreen},
+%  stringstyle=\color{everforestOrange},
+%  numberstyle=\color{everforestFg},
+%  identifierstyle=\color{everforestFg},
+%  breaklines=true,
+%  breakatwhitespace=true,
+%  showstringspaces=false,
+%  columns=flexible,
+%  keepspaces=true
+%}

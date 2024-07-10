@@ -1,0 +1,16 @@
+\begin{tikzpicture}
+    \draw[fill=everforestYellow, everforestYellow] (-1, 1) circle (0.5cm) node[white]{\texttt{RCC}};
+    \draw[fill=everforestAqua, everforestAqua] (0, 0) circle (1cm) node[white]{\texttt{BDI Agent}};
+    \draw[fill=everforestBg] (3, -2) rectangle ++ (6, 4);
+    \draw[very thick, everforestFg] (4, -2) -- (4, 1) (4, 0) -- (5, 0) (6, 0) -- (7, 0) (7, -0.5) -- (7, 2) (7, -2) -- (7, -1.5) (4, 1.5) -- (4, 2);
+    \draw[fill=everforestOrange, everforestOrange] (6.3, -1) circle (0.1cm) node[right]{\texttt{(x, y)}};
+    \draw[fill=everforestBlue, everforestBlue] (6, -1) circle (0.25cm) node[below=0.25cm]{\texttt{Body}};
+    \draw[->, very thick, everforestGray] (1.1, 0.1) -- (5.65, -0.9);
+    \draw[<-, very thick, everforestGray] (1.1, -0.1) -- (5.65, -1.1);
+
+    \draw[fill=everforestGreen, everforestGreen] (2, -0.1) circle (0.1cm);
+    \draw[everforestGreen, dashed] (2, -0.1) -- (2, 1.4) node[above, white, fill=everforestGreen, rounded corners]{\texttt{\{"type": \_, "target": \_\}}};
+
+    \draw[fill=everforestRed, everforestRed] (2.2, -0.35) circle (0.1cm);
+    \draw[everforestRed, dashed] (2.2, -0.35) -- (2.2, -1.4) node[below, white, fill=everforestRed, rounded corners]{\texttt{\{"type": "inform", "code": \_\}}};
+\end{tikzpicture}
