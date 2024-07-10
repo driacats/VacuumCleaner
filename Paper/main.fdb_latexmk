@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1720632040.59087 "main.aux" "main.bbl" "main" 1720632336.91226 0
-  "./bibliography.bib" 1720601726.22027 2188 858d71ebe7414504d907b07a78cc6d30 ""
+["bibtex main"] 1720644467.40679 "main.aux" "main.bbl" "main" 1720644468.70382 0
+  "./bibliography.bib" 1720644467.20832 2310 2f387821076b51a73bc30e66f3bc9ed6 ""
   "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/bibtex/bst/base/unsrt.bst" 1710106625 18030 1376b4b231b50c66211e47e42eda2875 ""
-  "main.aux" 1720632336.59583 2777 18cd5d8d038af1a629e816e10b2aab00 "pdflatex"
+  "main.aux" 1720644468.47894 3014 ed6734bf0ba8b12f023584d617562a3b "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1720632335.24621 "/Users/andrea/GitHub/LogicExplorationCleaningRobot/Paper/main.tex" "main.pdf" "main" 1720632336.91242 0
+["pdflatex"] 1720644467.47098 "/Users/andrea/GitHub/LogicExplorationCleaningRobot/Paper/main.tex" "main.pdf" "main" 1720644468.70397 0
   "/Users/andrea/GitHub/LogicExplorationCleaningRobot/Paper/main.tex" 1720630845.65498 1368 860c79ab81d95082da0e11d4f11562d0 ""
   "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1710106625 2971 def0b6c1f0b107b3b936def894055589 ""
   "/opt/homebrew/Cellar/texlive/20240312/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1710106625 2900 1537cc8184ad1792082cd229ecc269f4 ""
@@ -170,15 +170,16 @@
   "colors.tex" 1720445843.80141 472 66c04e0119187486e98d2898f13a553d ""
   "llncs.cls" 1706524644 43402 5fb5a2dc40571aa40f3d199c00cbb986 ""
   "lstsettings.tex" 1720620639.59785 2343 23a3b57449b46bb105edcd3c25025529 ""
-  "main.aux" 1720632336.59583 2777 18cd5d8d038af1a629e816e10b2aab00 "pdflatex"
-  "main.bbl" 1720632040.68644 1342 8ce7886813913c5a9e78a2cb499499b5 "bibtex main"
-  "main.out" 1720632336.59685 225 63fc5466017dc146dae7b6d5b3c53576 "pdflatex"
+  "main.aux" 1720644468.47894 3014 ed6734bf0ba8b12f023584d617562a3b "pdflatex"
+  "main.bbl" 1720644467.46595 1444 7cbd4d59c910db9cc28e622960bf24fd "bibtex main"
+  "main.out" 1720644468.47952 225 63fc5466017dc146dae7b6d5b3c53576 "pdflatex"
   "main.tex" 1720630845.65498 1368 860c79ab81d95082da0e11d4f11562d0 ""
-  "sections/conclusions.tex" 1719908979.06057 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "sections/design_and_implementation.tex" 1720631419.03803 12304 ac37b910aeb3111be6a9e4bbe6835d70 ""
+  "sections/conclusions.tex" 1720644038.25607 1532 42c39c9a010be3d2a6d4ca21d24a0e6e ""
+  "sections/design_and_implementation.tex" 1720644402.0275 12317 67ebc2d441a7ddaf181cb1549e12c77a ""
   "sections/imgs/env.png" 1720603813.42266 1423971 a6134538e92652f2a0da9beafc987711 ""
+  "sections/imgs/screen.jpeg" 1720634211.06113 151972 4ac509751a903b8b6f6233c700523352 ""
   "sections/introduction.tex" 1720602992.79848 4978 fa0a0db0796f41fcab27dbd0c2923a77 ""
-  "sections/results.tex" 1720630871.01376 19 ceea1365b4f796fcacb329ff5f075386 ""
+  "sections/results.tex" 1720636013.36433 2068 6c1689796426dea86b708fc3373847f5 ""
   "sections/tikz/architecture.tex" 1720632335.05906 1265 9363e93d0fbf6bf850ea096c3cae5ccc ""
   "sections/tikz/env.tex" 1720622554.39986 15969 bf495801f998dad2e5e2cce6b214d3fe ""
   "sections/tikz/relations.tex" 1720010453.14408 957 cc58ecbcdb80a23fec6a08c18992f05f ""

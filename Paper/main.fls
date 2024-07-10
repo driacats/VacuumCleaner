@@ -284,6 +284,11 @@ INPUT ./sections/imgs/env.png
 INPUT ./sections/results.tex
 INPUT ./sections/results.tex
 INPUT sections/results.tex
+INPUT ./sections/imgs/screen.jpeg
+INPUT ./sections/imgs/screen.jpeg
+INPUT ./sections/imgs/screen.jpeg
+INPUT ./sections/imgs/screen.jpeg
+INPUT ./sections/imgs/screen.jpeg
 INPUT ./sections/conclusions.tex
 INPUT ./sections/conclusions.tex
 INPUT sections/conclusions.tex

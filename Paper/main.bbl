@@ -35,4 +35,9 @@ David~A. Randell, Zhan Cui, and Anthony~G. Cohn.
 \newblock A spatial logic based on regions and connection.
 \newblock In Bernhard Nebel, Charles Rich, and William~R. Swartout, editors, {\em Proceedings of the 3rd International Conference on Principles of Knowledge Representation and Reasoning (KR'92). Cambridge, MA, USA, October 25-29, 1992}, pages 165--176. Morgan Kaufmann, 1992.
 
+\bibitem{jacamo}
+Jacamo.
+\newblock \url{https://jacamo-lang.github.io/}.
+\newblock Accessed: \today.
+
 \end{thebibliography}
