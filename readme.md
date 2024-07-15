@@ -12,7 +12,7 @@ The **vacuum cleaner robot** is a common didactic example in the field of multi-
 - Java 22;
 - Godot 4.
 
-### Launch
+### Usage
 
 1. Clone the repository;
 
